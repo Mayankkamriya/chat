@@ -5,7 +5,8 @@ const Connection = require('./db.js')
 const mongoose = require("mongoose")
 const Chat = require('./models/Chat.js')
 const { timeStamp } = require('console')
-
+const dotenv = require('dotenv');
+dotenv.config();
 const app = express()
 app.use(express.json())
 Connection()

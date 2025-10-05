@@ -343,6 +343,7 @@
 
     .chat_layout {
         flex-direction: column;
+        width: 100vw;
     }
 
     .sidebar {

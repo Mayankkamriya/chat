@@ -15,7 +15,7 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "server/app.js" },
-    { "src": "/(.*)", "dest": "front-end/dist/$1" }
+    { "src": "/(.*)", "dest": "/index.html" }
   ],
   "buildCommand": "cd front-end && npm run build",
   "installCommand": "cd front-end && npm install"

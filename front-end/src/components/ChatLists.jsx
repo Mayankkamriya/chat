@@ -1,30 +1,34 @@
 import React, { useEffect, useRef } from 'react'
 
-const ChatLists = ({chats}) => {
+const ChatLists = ({chats, currentUser}) => {
     const endOfMessages = useRef()
-    const user = localStorage.getItem('user')
-    function SenderChat ({message, username, avatar}) {
+    
+    function SenderChat ({message, avatar, timestamp}) {
         return (
-            <div className='chat_sender'>
-                <img src={avatar} alt="" />
-                <p>
-                    <strong>{username}</strong> <br/>
-                    {message}
-                </p>
+            <div className='message_wrapper sender'>
+                <div className='chat_bubble sender_bubble'>
+                    <p className='message_text'>{message}</p>
+                    <span className='message_time'>
+                        {new Date(timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                    </span>
+                </div>
             </div>
         )
     }
-    function ReceiverChat ({message, username, avatar}) {
+    
+    function ReceiverChat ({message, avatar, timestamp}) {
         return (
-            <div className='chat_receiver'>
-                <img src={avatar} alt="" />
-                <p>
-                    <strong>{username}</strong> <br/>
-                    {message}
-                </p>
+            <div className='message_wrapper receiver'>
+                <div className='chat_bubble receiver_bubble'>
+                    <p className='message_text'>{message}</p>
+                    <span className='message_time'>
+                        {new Date(timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                    </span>
+                </div>
             </div>
         )
     }
+    
     useEffect(() => {
         scrollToBottom()
     }, [chats])
@@ -32,23 +36,24 @@ const ChatLists = ({chats}) => {
     const scrollToBottom = () => {
         endOfMessages.current?.scrollIntoView({behavior: "smooth"})
     }
+    
   return (
     <div className='chats_list'>
         {
             chats.map((chat, index) => {
-                if(chat.username === user) {
+                if(chat.sender === currentUser) {
                     return <SenderChat 
                     key={index}
                     message = {chat.message}
-                    username = {chat.username}
-                    avatar = {chat.avatar}/>
+                    avatar = {chat.senderAvatar}
+                    timestamp = {chat.timestamp}/>
                 }
                  else {
                     return <ReceiverChat 
                     key={index}
                     message = {chat.message}
-                    username = {chat.username}
-                    avatar = {chat.avatar}/>
+                    avatar = {chat.senderAvatar}
+                    timestamp = {chat.timestamp}/>
                  }
             })
         }

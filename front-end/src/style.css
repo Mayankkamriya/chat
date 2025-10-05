@@ -332,3 +332,115 @@
     justify-content: center;
     font-size: 18px;
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .login_container {
+        padding: 30px 20px;
+        margin: 0 15px;
+        width: calc(100% - 30px);
+    }
+
+    .chat_layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e5e5e5;
+        max-height: 100vh;
+    }
+
+    .chat_section {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10;
+        display: none;
+    }
+
+    .chat_section.active {
+        display: flex;
+    }
+
+    .sidebar.hidden {
+        display: none;
+    }
+
+    .back_btn {
+        display: block;
+    }
+
+    .chat_bubble {
+        max-width: 80%;
+    }
+
+    .sidebar_header h3 {
+        font-size: 18px;
+    }
+
+    .logout_btn {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .user_item img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .chat_header_avatar {
+        width: 35px;
+        height: 35px;
+    }
+
+    .inputtext_container {
+        padding: 8px 15px;
+    }
+
+    .inputtext_container input {
+        height: 40px;
+        font-size: 14px;
+    }
+
+    .send_btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login_container {
+        padding: 25px 15px;
+    }
+
+    .login_title h2 {
+        font-size: 24px;
+    }
+
+    .login_icon {
+        font-size: 32px;
+    }
+
+    .chat_bubble {
+        max-width: 85%;
+    }
+
+    .message_text {
+        font-size: 13px;
+    }
+
+    .user_header h4 {
+        font-size: 15px;
+    }
+
+    .last_message,
+    .user_status {
+        font-size: 13px;
+    }
+}

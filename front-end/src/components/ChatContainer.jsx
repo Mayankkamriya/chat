@@ -138,7 +138,7 @@ const ChatContainer = () => {
       {user ? (
         <div className="home">
           <div className="chat_layout">
-            <div className="sidebar">
+            <div className={`sidebar ${selectedUser ? 'hidden' : ''}`}>
               <div className="sidebar_header">
                 <h3>{user}</h3>
                 <button className="logout_btn" onClick={Logout}>Logout</button>
@@ -152,7 +152,7 @@ const ChatContainer = () => {
               />
             </div>
 
-            <div className="chat_section">
+            <div className={`chat_section ${selectedUser ? 'active' : ''}`}>
               {selectedUser ? (
                 <>
                   <div className="chat_header">

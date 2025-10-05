@@ -9,13 +9,13 @@
       "src": "front-end/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "front-end/dist"
+        "distDir": "dist"
       }
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/server/app.js" },
-    { "src": "/(.*)", "dest": "/front-end/dist/$1" }
+    { "src": "/api/(.*)", "dest": "server/app.js" },
+    { "src": "/(.*)", "dest": "front-end/dist/$1" }
   ],
   "buildCommand": "cd front-end && npm run build",
   "installCommand": "cd front-end && npm install"

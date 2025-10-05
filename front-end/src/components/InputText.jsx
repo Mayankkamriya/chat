@@ -1,22 +1,37 @@
 import React, { useState } from "react";
+import { FaPaperPlane } from "react-icons/fa6";
 
 const InputText = ({addMessage}) => {
-    const [message, setMessage] = useState()
+    const [message, setMessage] = useState('')
+    
     const sendMessage = () => {
-        addMessage(message)
-        setMessage("")
+        if (message.trim()) {
+            addMessage(message)
+            setMessage("")
+        }
     }
+    
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault()
+            sendMessage()
+        }
+    }
+    
   return (
     <div className="inputtext_container">
-      <textarea
+      <input
+        type="text"
         name="message"
         id="message"
-        rows="6"
-        placeholder="Input Message ..."
+        placeholder="Type a message..."
         onChange={(e) => setMessage(e.target.value)}
+        onKeyPress={handleKeyPress}
         value={message}
-      ></textarea>
-      <button onClick={sendMessage}>Send</button>
+      />
+      <button onClick={sendMessage} className="send_btn">
+        <FaPaperPlane />
+      </button>
     </div>
   );
 };

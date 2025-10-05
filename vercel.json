@@ -14,10 +14,15 @@
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "server/app.js" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "front-end/dist/index.html" }
+    { 
+      "src": "/api/(.*)", 
+      "dest": "server/app.js" 
+    },
+    { 
+      "src": "/(.*)", 
+      "dest": "/front-end/dist/$1" 
+    }
   ],
-  "installCommand": "cd front-end && npm install",
+  "installCommand": "npm install && cd front-end && npm install",
   "buildCommand": "cd front-end && npm run build"
 }
